@@ -6,7 +6,11 @@ public class TreeNodeUse {
 		if(root==null) {
 			return;
 		}
-		System.out.print(root.data+" ");
+		System.out.print(root.data+" : ");
+		for(int i=0;i<root.children.size();i++) {
+			System.out.print(root.children.get(i).data+" ");
+		}
+		System.out.println();
 	    for(int i=0;i<root.children.size();i++) {
 	    	TreeNode<Integer> child=root.children.get(i);
 	    	printTree(child);
