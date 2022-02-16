@@ -16,6 +16,16 @@ public class TreeNodeUse {
 	    	printTree(child);
 	    }
 	}
+	
+	public static int countNumberNode(TreeNode<Integer> root) {
+		int count=1;
+		for(int i=0;i<root.children.size();i++) {
+			int countNodes=countNumberNode(root.children.get(i));
+			count+=countNodes;
+			
+		}
+		return count;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -30,7 +40,9 @@ public class TreeNodeUse {
 		root.children.add(node3);
 		node2.children.add(node4);
 		node2.children.add(node5);
-		printTree(root);
+//		printTree(root);
+		int ans=countNumberNode(root);
+		System.out.println(ans);
 
 	}
 
