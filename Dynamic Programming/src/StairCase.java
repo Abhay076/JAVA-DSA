@@ -54,17 +54,37 @@ public class StairCase {
 			return myAns;
 		}
 	}
+	
+	// Iterative methods in Dp that is Actual solution of DP
+	public static long iterativeDP(int n) {
+		if(n==0||n==1) {
+			return 1;
+		}
+		else if(n==2) {
+			return 2;
+		}
+		long dp[]= new long[n+1];
+		dp[0]=1;
+		dp[1]=1;
+		dp[2]=2;
+	    for(int i=3;i<=n;i++) {
+	    	dp[i]=dp[i-1]+dp[i-2]+dp[i-3];
+	    }
+	    return dp[n];
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n=4;
+		int n=10;
 //		long ans=stairCase(n);
 		long dp[]= new long[n+1];
 		for(int i=0;i<dp.length;i++) {
 			dp[i]=-1;
 		}
-		long ansMemoization=stairCaseMemo(n, dp);
-		System.out.println(ansMemoization);
+//		long ansMemoization=stairCaseMemo(n, dp);
+//		System.out.println(ansMemoization);
+		long ans=iterativeDP(n);
+		System.out.println(ans);
 
 	}
 
