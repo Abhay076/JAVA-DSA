@@ -58,17 +58,44 @@ public class MinStepTo1 {
 		}
 		return Math.min(ans1, Math.min(ans2, ans3))+1;
 	}
+	
+	// Using Iterative DP
+	public static int countMinStepsToOneIte(int n) {
+		if(n == 1){
+	           return 0;
+	       }
+	    	
+	        int dp[]= new int[n+1];
+	        dp[0]=0;
+	        dp[1]=0;
+		for(int i=2;i<dp.length;i++) {
+			int DividedByTwo=Integer.MAX_VALUE;
+			int DividedByThree=Integer.MAX_VALUE;
+			int ans1=dp[i-1];
+			if(i%2==0) {
+				DividedByTwo=dp[i/2];
+			}
+			else if(i%3==0) {
+				DividedByThree=dp[i/3];
+			}
+			dp[i]=1+Math.min(ans1, Math.min(DividedByTwo, DividedByThree));	
+		}
+		return dp[n];
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int n=7;
 //		int recursion=countMinStepsToOne(n);
 //		System.out.println(recursion);
-		int dp[]= new int[n+1];
-		for(int i=0;i<dp.length;i++) {
-			dp[i]=-1;
-		}
-		int ans=countMinStepsToOneMemo(n, dp);
+//		int dp[]= new int[n+1];
+//		for(int i=0;i<dp.length;i++) {
+//			dp[i]=-1;
+//		}
+//		int ans=countMinStepsToOneMemo(n, dp);
+//		System.out.println(ans);
+		int ans=countMinStepsToOneIte(n);
 		System.out.println(ans);
 
 	}
