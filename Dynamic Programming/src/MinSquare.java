@@ -15,11 +15,35 @@ public class MinSquare {
 		return myAns; 
 		
 	}
+	//memoization
+	public static int minCountHelper(int n, int[] dp)
+    {
+        if (n==0) {
+            return 0;
+        }
+        int minVal = Integer.MAX_VALUE;
+        for (int i=1;i*i<=n;i++)
+        {
+            if (dp[n-(i*i)]==-1)
+                dp[n-(i*i)]=minCountHelper(n-(i*i),dp);
+            int currVal = dp[n-(i*i)];
+            if (currVal<minVal)
+                minVal=currVal;
+        }
+        
+        return minVal+1;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int n=41;
-		int ans=minSquar(n);
+//		int ans=minSquar(n);
+//		System.out.println(ans);
+		int dp[]= new int[n+1];
+		for(int i=0;i<dp.length;i++) {
+			dp[i]=-1;
+		}
+		int ans=minCountHelper(n, dp);
 		System.out.println(ans);
 
 	}
