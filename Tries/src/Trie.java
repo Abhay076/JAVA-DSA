@@ -4,6 +4,7 @@ class TrieNode{
 	TrieNode children[];
 	
 	public TrieNode(char data) {
+		this.data=data;
 		this.isTerminal=false;
 		this.children=new TrieNode[26];
 	}
@@ -26,7 +27,7 @@ public class Trie {
 			child= new TrieNode(word.charAt(0));
 			root.children[childIndex]=child;
 		}
-		addHelper(root, word.substring(1));
+		addHelper(child, word.substring(1));
 	}
      public void add(String word) {
                addHelper(root, word);
