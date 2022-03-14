@@ -32,6 +32,20 @@ public class Trie {
                addHelper(root, word);
                
      }
+     private boolean searchHelper(TrieNode root,String word) {
+    	 if(word.length()==0) {
+    		 return root.isTerminal;
+    	 }
+    	 int childIndex=word.charAt(0)-'A';
+    	 TrieNode child= root.children[childIndex];
+    	 if(child==null) {
+    		 return false;
+    	 }
+    	 return searchHelper(child,word.substring(1));
+     }
+     public boolean search(String word) {
+    	 return searchHelper(root,word);
+     }
     
      public void remove(String word) {
     	 
