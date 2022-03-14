@@ -7,6 +7,8 @@ public class TrieUse {
 		t.add("NOTE");
 		t.add("AND");
 		System.out.println(t.search("NOTE"));
+		t.remove("NOTE");
+		System.out.println(t.search("NOTE"));
 
 	}
 
